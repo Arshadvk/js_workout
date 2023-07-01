@@ -1,10 +1,18 @@
-function greet(message) {
-    console.log(message + " " + this.name);
-  }
+const person = {
+  firstName: "John",
+  lastName: "Doe",
+};
   
-  var person = {
-    name: "John",
-  };
+  function greet(message) {
+    console.log(message + ", " + this. firstName ,this. lastName );}
+    
+  // Using call
+  greet.call(person, "Hello"); // Output: "Hello, John Doe"
   
-  greet.call(person, "Hello"); // Output: Hello John
+  // Using apply
+  greet.apply(person, ["Hello"]); // Output: "Hello, John Doe"
   
+  // Using bind 
+  const greetJohn = greet.bind(person);
+greetJohn("Hello"); // Output: "Hello, John Doe"
+greetJohn("Hello00"); // Output: "Hello, John Doe"
